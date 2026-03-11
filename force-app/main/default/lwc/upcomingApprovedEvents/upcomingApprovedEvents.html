@@ -1,0 +1,101 @@
+<template>
+  <section class="slds-card slds-m-around_medium">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <span class="slds-icon_container slds-icon-standard-event" title="Upcoming Approved Events">
+            <svg class="slds-icon slds-icon_small" aria-hidden="true">
+              <use xlink:href="/_slds/icons/standard-sprite/svg/symbols.svg#event"></use>
+            </svg>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <span class="slds-text-heading_small">Upcoming Approved Events</span>
+          </h2>
+        </div>
+      </header>
+    </div>
+
+    <div class="slds-card__body slds-card__body_inner">
+      <template if:true={loading}>
+        <div class="slds-is-relative" style="min-height: 4rem;">
+          <lightning-spinner alternative-text="Loading events" size="small"></lightning-spinner>
+        </div>
+      </template>
+
+      <template if:true={error}>
+        <div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" role="alert">
+          <span class="slds-assistive-text">Error</span>
+          <h2>{errorMessage}</h2>
+        </div>
+      </template>
+
+      <template if:false={loading}>
+        <template if:true={hasEvents}>
+          <ul class="slds-grid slds-wrap slds-gutters">
+            <template for:each={events} for:item="evt">
+              <li key={evt.id} class="slds-col slds-size_1-of-1">
+                <article class="slds-card slds-m-around_x-small event-card">
+                  <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                      <div class="slds-media__body">
+                        <h3 class="slds-card__header-title slds-truncate" title={evt.name}>{evt.name}</h3>
+                      </div>
+                    </header>
+                  </div>
+                  <div class="slds-card__body slds-card__body_inner">
+                    <p class="slds-text-color_weak slds-m-bottom_x-small">
+                      <lightning-icon icon-name="utility:event" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                      <span title={evt.dateDisplay}>{evt.dateDisplay}</span>
+                    </p>
+                    <template if:true={evt.venue}>
+                      <p class="slds-text-color_weak slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:location" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <span class="slds-truncate" title={evt.venue}>{evt.venue}</span>
+                      </p>
+                    </template>
+                    <template if:true={evt.type}>
+                      <p class="slds-text-color_weak slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:tags" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <span class="slds-truncate" title={evt.type}>{evt.type}</span>
+                      </p>
+                    </template>
+                    <template if:true={evt.registrationCount}>
+                      <p class="slds-text-color_weak slds-m-bottom_x-small">
+                        <lightning-icon icon-name="utility:users" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <span>Registrations: {evt.registrationCount}</span>
+                      </p>
+                    </template>
+                    <template if:true={evt.loadingCount}>
+                      <p class="slds-text-color_weak slds-m-bottom_x-small">
+                        <lightning-spinner alternative-text="Loading registrations" size="x-small" class="slds-m-right_x-small"></lightning-spinner>
+                        <span>Loading registrations...</span>
+                      </p>
+                    </template>
+                    <template if:true={evt.flyerUrl}>
+                      <p class="slds-m-top_x-small">
+                        <lightning-button
+                          variant="base"
+                          label="View Flyer"
+                          onclick={handleFlyerClick}
+                          data-url={evt.flyerUrl}
+                          class="slds-p-left_none">
+                        </lightning-button>
+                      </p>
+                    </template>
+                  </div>
+                </article>
+              </li>
+            </template>
+          </ul>
+        </template>
+        <template if:false={hasEvents}>
+          <div class="slds-p-around_medium slds-text-align_center slds-text-color_weak">
+            No upcoming approved events.
+          </div>
+        </template>
+      </template>
+    </div>
+  </section>
+</template>

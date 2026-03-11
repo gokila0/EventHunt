@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<title>Student Event Registration</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+  background-size: cover;
+  opacity: 0.25;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+  margin: 40px 20px;
+  background: rgba(255, 237, 213, 0.95);
+  padding: 40px 36px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #1a73e8, #4fc3f7, #1a73e8);
+}
+
+.header-icon {
+  text-align: center;
+  font-size: 44px;
+  margin-bottom: 6px;
+}
+
+h2 {
+  text-align: center;
+  color: #1a73e8;
+  margin-bottom: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.form-row {
+  display: flex;
+  gap: 14px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #374151;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+}
+
+label .req {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+input, select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+input:focus, select:focus {
+  border-color: #1a73e8;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.12);
+}
+
+input::placeholder {
+  color: #94a3b8;
+  font-weight: 300;
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%231a73e8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  background: linear-gradient(135deg, #1a73e8, #4a90f4);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 18px rgba(26, 115, 232, 0.35);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #155ab6, #1a73e8);
+  box-shadow: 0 6px 24px rgba(26, 115, 232, 0.45);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(26, 115, 232, 0.3);
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+  margin: 20px 0;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 28px 18px;
+    margin: 16px 10px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  h2 { font-size: 20px; }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header-icon">🎓</div>
+<h2>Event Registration</h2>
+<p class="subtitle">Register for the upcoming event by filling the form below</p>
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dfj00000JKU9G" method="POST">
+
+<input type="hidden" name="oid" value="00Dfj00000JKU9G">
+<input type="hidden" name="retURL" value="https://www.google.com">
+<input type="hidden" name="company" value="Student">
+
+<div class="form-row">
+  <div class="form-group">
+    <label>First Name <span class="req">*</span></label>
+    <input id="first_name" name="first_name" type="text" placeholder="John" required>
+  </div>
+  <div class="form-group">
+    <label>Last Name <span class="req">*</span></label>
+    <input id="last_name" name="last_name" type="text" placeholder="Doe" required>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label>Email <span class="req">*</span></label>
+    <input id="email" name="email" type="email" placeholder="you@email.com" required>
+  </div>
+  <div class="form-group">
+    <label>Phone <span class="req">*</span></label>
+    <input id="phone" name="phone" type="tel" placeholder="9876543210" required>
+  </div>
+</div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label>Roll Number <span class="req">*</span></label>
+    <input id="00Nfj00003CWR33" name="00Nfj00003CWR33" type="text" placeholder="e.g. 21CS101" required>
+  </div>
+  <div class="form-group">
+    <label>Department <span class="req">*</span></label>
+    <input id="00Nfj00003CWRMP" name="00Nfj00003CWRMP" type="text" placeholder="e.g. CSE" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Event Name <span class="req">*</span></label>
+  <input id="00Nfj00003CWRJB" name="00Nfj00003CWRJB" type="text" placeholder="Enter event name" required>
+</div>
+
+<div class="divider"></div>
+
+<div class="form-row">
+  <div class="form-group">
+    <label>Student Year</label>
+    <select id="00Nfj00003CWUTx" name="00Nfj00003CWUTx">
+      <option value="">-- Select Year --</option>
+      <option value="UG-I">UG - I Year</option>
+      <option value="UG-II">UG - II Year</option>
+      <option value="UG-III">UG - III Year</option>
+      <option value="UG-IV">UG - IV Year</option>
+      <option value="PG-I">PG - I Year</option>
+      <option value="PG-II">PG - II Year</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Gender</label>
+    <select id="00Nfj00003CWY69" name="00Nfj00003CWY69">
+      <option value="">-- Select Gender --</option>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Registration Date</label>
+  <input id="00Nfj00003CWXur" name="00Nfj00003CWXur" type="date">
+</div>
+
+<button type="submit">🚀 Register Now</button>
+
+</form>
+
+<p class="footer-note">Your data is securely submitted to the college system.</p>
+
+</div>
+
+</body>
+</html>
