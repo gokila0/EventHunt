@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Successful</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+      background-size: cover;
+      opacity: 0.25;
+      z-index: -1;
+    }
+    .card {
+      background: rgba(255, 237, 213, 0.95);
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+      max-width: 480px;
+      width: 100%;
+      margin: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #1a73e8, #4fc3f7, #1a73e8);
+    }
+    .icon { font-size: 64px; margin-bottom: 16px; }
+    h2 {
+      color: #1a73e8;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    a {
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #1a73e8, #4a90f4);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 18px rgba(26, 115, 232, 0.35);
+    }
+    a:hover {
+      background: linear-gradient(135deg, #155ab6, #1a73e8);
+      box-shadow: 0 6px 24px rgba(26, 115, 232, 0.45);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">🎉</div>
+    <h2>Registration Successful!</h2>
+    <p>Thank you for registering for the event. Your details have been submitted successfully. You will receive a confirmation soon.</p>
+    <a href="https://gokila0.github.io/EventHunt/">Register Another</a>
+  </div>
+</body>
+</html>
