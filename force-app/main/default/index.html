@@ -1,45 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Event Registration</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f2f4f7;
-}
-.container{
-  width:450px;
-  margin:40px auto;
-  background:#fff;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.2);
-}
-h2{
-  text-align:center;
-  color:#0b6b3a;
-}
-label{
-  display:block;
-  margin-top:10px;
-  margin-bottom:6px;
-  font-weight:bold;
-}
-input,select{
-  width:100%;
-  padding:10px;
-  margin-bottom:10px;
-  box-sizing:border-box;
-}
-button{
-  width:100%;
-  padding:12px;
-  background:#0b6b3a;
-  color:white;
-  border:none;
-  cursor:pointer;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+    background-size: cover;
+    opacity: 0.25;
+    z-index: -1;
+  }
+
+  .container {
+    background: rgba(255, 237, 213, 0.95);
+    width: 100%;
+    max-width: 500px;
+    margin: 30px 16px;
+    padding: 36px 32px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #1a73e8, #4fc3f7, #1a73e8);
+  }
+
+  h2 {
+    text-align: center;
+    color: #1a73e8;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+
+  label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #334155;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #1e293b;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  input:focus, select:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+  }
+
+  button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 18px;
+    background: linear-gradient(135deg, #1a73e8, #4a90f4);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(26, 115, 232, 0.35);
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #155ab6, #1a73e8);
+    box-shadow: 0 6px 24px rgba(26, 115, 232, 0.45);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 28px 18px 22px; }
+    h2 { font-size: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -47,7 +121,8 @@ button{
 <div class="container">
   <h2>Event Registration</h2>
 
-  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dfj00000JKU9G" method="POST">
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8orgId=00Dfj00000JKU9G" method="POST">
+    
     <input type="hidden" name="oid" value="00Dfj00000JKU9G">
     <input type="hidden" name="retURL" value="https://gokila0.github.io/EventHunt/thankyou.html">
 
@@ -70,7 +145,7 @@ button{
     <input id="00Nfj00003CWRMP" name="00Nfj00003CWRMP" maxlength="100" type="text" required>
 
     <label for="phone">Phone</label>
-    <input id="phone" name="phone" maxlength="40" type="tel" required>
+    <input id="phone" name="phone" maxlength="40" type="text" required>
 
     <label for="email">Email</label>
     <input id="email" name="email" maxlength="80" type="email" required>
@@ -94,11 +169,20 @@ button{
     </select>
 
     <label for="00Nfj00003CWXur">Registration Date</label>
-    <input id="00Nfj00003CWXur" name="00Nfj00003CWXur" type="date" required>
+    <input id="00Nfj00003CWXur" name="00Nfj00003CWXur" type="text" readonly required>
 
     <button type="submit">Register</button>
   </form>
 </div>
+
+<script>
+  const regDateField = document.getElementById("00Nfj00003CWXur");
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  regDateField.value = `${yyyy}-${mm}-${dd}`;
+</script>
 
 </body>
 </html>
